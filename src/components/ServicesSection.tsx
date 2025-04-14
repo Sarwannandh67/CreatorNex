@@ -38,11 +38,15 @@ const ServicesSection = () => {
   ];
 
   return (
-    <section id="services" className="section-padding bg-gray-50">
-      <div className="container mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">What We Do</h2>
-          <div className="h-1 w-20 bg-primary mx-auto mb-8 rounded-full"></div>
+    <section id="services" className="section-padding relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-b from-gray-50/50 to-white/90 backdrop-blur-sm"></div>
+      
+      <div className="container mx-auto relative z-10">
+        <div className="text-center mb-16 animate-fade-in">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            <span className="text-gradient-primary">What We Do</span>
+          </h2>
+          <div className="h-1 w-20 bg-gradient-to-r from-primary to-accent mx-auto mb-8 rounded-full"></div>
           <p className="text-lg max-w-3xl mx-auto text-gray-700">
             We provide comprehensive digital solutions tailored to your business goals.
             Our services are designed to help you stand out in a crowded marketplace.
@@ -53,21 +57,24 @@ const ServicesSection = () => {
           {services.map((service, index) => (
             <div 
               key={index} 
-              className="bg-white p-8 rounded-xl shadow-lg hover-scale glass flex flex-col"
+              className="neo-card p-8 rounded-xl hover-lift group animate-fade-in"
+              style={{ animationDelay: `${index * 100}ms` }}
             >
               <div className="flex-grow">
-                {service.icon}
+                <div className="mb-6 transform group-hover:scale-110 transition-transform">
+                  {service.icon}
+                </div>
                 <h3 className="text-xl font-bold mb-4">{service.title}</h3>
                 <p className="text-gray-600 mb-4">{service.description}</p>
               </div>
               <a 
                 href="#contact" 
-                className="text-primary hover:underline font-medium inline-flex items-center mt-2"
+                className="text-primary hover:text-accent transition-colors font-medium inline-flex items-center mt-2 group"
               >
                 Learn More
                 <svg 
                   xmlns="http://www.w3.org/2000/svg" 
-                  className="h-4 w-4 ml-1" 
+                  className="h-4 w-4 ml-1 transform group-hover:translate-x-1 transition-transform" 
                   fill="none" 
                   viewBox="0 0 24 24" 
                   stroke="currentColor"
@@ -85,7 +92,7 @@ const ServicesSection = () => {
         </div>
 
         <div className="text-center mt-16">
-          <Button className="bg-primary hover:bg-primary/90 text-white text-lg px-8 py-6">
+          <Button className="neo-card text-primary hover:bg-white hover:shadow-lg text-lg px-8 py-6 hover-lift">
             Schedule a Free Consultation
           </Button>
         </div>
