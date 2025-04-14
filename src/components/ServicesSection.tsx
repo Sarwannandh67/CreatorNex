@@ -42,7 +42,8 @@ const ServicesSection = () => {
     {
       icon: <Bot className="h-10 w-10 mb-4 text-primary" />,
       title: "AI Automation",
-      description: "Automating repetitive tasks to save time and increase efficiency."
+      description: "Automating repetitive tasks to save time and increase efficiency.",
+      isNew: true
     }
   ];
 
@@ -62,13 +63,18 @@ const ServicesSection = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {services.map((service, index) => (
             <div 
               key={index} 
-              className="bg-card/50 backdrop-blur-sm border border-border p-8 rounded-xl hover:bg-card/80 transition-colors animate-fade-in"
+              className="bg-card/50 backdrop-blur-sm border border-border p-8 rounded-xl hover:bg-card/80 transition-colors animate-fade-in relative overflow-hidden"
               style={{ animationDelay: `${index * 100}ms` }}
             >
+              {service.isNew && (
+                <div className="absolute top-4 right-4 bg-primary/90 text-primary-foreground px-3 py-1 rounded-lg text-sm font-medium shadow-md">
+                  New In Market
+                </div>
+              )}
               <div className="flex-grow">
                 <div className="mb-6 transform group-hover:scale-110 transition-transform">
                   {service.icon}
