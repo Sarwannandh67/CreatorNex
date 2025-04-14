@@ -7,7 +7,7 @@ const TeamSection = () => {
       name: "S. Lohith",
       role: "CEO & Co-Founder",
       image: "/images/lohith.jpg",
-      bio: "10+ years of experience in digital marketing and business strategy",
+      bio: "2+ years of experience in digital marketing and business strategy",
       social: {
         twitter: "https://twitter.com/lohithsalla",
         linkedin: "https://linkedin.com/in/salla-lohith",
@@ -18,7 +18,7 @@ const TeamSection = () => {
       name: "Sarwan Nandh",
       role: "Co-Founder",
       image: "/images/sarwan.jpg",
-      bio: "Award-winning designer with a passion for creating beautiful user experiences",
+      bio: "A passionate designer with a passion for creating beautiful user experiences",
       social: {
         twitter: "https://twitter.com/Sarwannandh_67",
         linkedin: "https://linkedin.com/in/sarwannandh",
