@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { ExternalLink } from "lucide-react";
 
@@ -69,12 +68,12 @@ const PortfolioSection = () => {
   );
 
   return (
-    <section id="portfolio" className="section-padding bg-white">
+    <section className="py-20 px-6 bg-background">
       <div className="container mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Work</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">Our Work</h2>
           <div className="h-1 w-20 bg-primary mx-auto mb-8 rounded-full"></div>
-          <p className="text-lg max-w-3xl mx-auto text-gray-700">
+          <p className="text-lg max-w-3xl mx-auto text-muted-foreground">
             Browse our latest projects and see how we've helped brands 
             achieve their digital goals with strategic solutions.
           </p>
@@ -88,8 +87,8 @@ const PortfolioSection = () => {
               onClick={() => setActiveFilter(filter.id)}
               className={`px-5 py-2 rounded-full text-sm font-medium transition-colors ${
                 activeFilter === filter.id
-                  ? "bg-primary text-white"
-                  : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                  ? "bg-primary text-primary-foreground"
+                  : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
               }`}
             >
               {filter.label}
@@ -102,7 +101,7 @@ const PortfolioSection = () => {
           {filteredProjects.map((project) => (
             <div
               key={project.id}
-              className="group bg-white rounded-xl overflow-hidden shadow-lg hover-scale"
+              className="group bg-card rounded-xl overflow-hidden border border-border hover:bg-card/80 transition-colors"
             >
               <div className="relative h-64 overflow-hidden">
                 <img
@@ -113,20 +112,20 @@ const PortfolioSection = () => {
                 <div className="absolute inset-0 bg-primary/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                   <a
                     href="#"
-                    className="bg-white text-primary p-3 rounded-full hover:bg-gray-100 transition-colors"
+                    className="bg-background text-primary p-3 rounded-full hover:bg-background/90 transition-colors"
                   >
                     <ExternalLink size={20} />
                   </a>
                 </div>
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-bold mb-2">{project.title}</h3>
-                <p className="text-gray-600 mb-4">{project.description}</p>
+                <h3 className="text-xl font-bold mb-2 text-foreground">{project.title}</h3>
+                <p className="text-muted-foreground mb-4">{project.description}</p>
                 <div className="flex flex-wrap gap-2">
                   {project.tags.map((tag, index) => (
                     <span
                       key={index}
-                      className="text-xs bg-gray-100 text-gray-700 px-3 py-1 rounded-full"
+                      className="text-xs bg-secondary text-secondary-foreground px-3 py-1 rounded-full"
                     >
                       {tag}
                     </span>

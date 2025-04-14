@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { ChevronLeft, ChevronRight, Star } from "lucide-react";
 
@@ -10,7 +9,7 @@ const TestimonialsSection = () => {
       company: "TechVision Inc.",
       image: "https://randomuser.me/api/portraits/women/1.jpg",
       stars: 5,
-      quote: "Working with this agency has been transformative for our brand. They delivered a complete digital strategy that increased our leads by 200% within the first quarter!"
+      quote: "Working with CreatorNex has been transformative for our brand. They delivered a complete digital strategy that increased our leads by 200% within the first quarter!"
     },
     {
       id: 2,
@@ -69,12 +68,14 @@ const TestimonialsSection = () => {
   };
 
   return (
-    <section id="testimonials" className="section-padding gradient-bg text-white">
-      <div className="container mx-auto">
+    <section className="py-20 px-6 bg-background relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-accent/10 to-background"></div>
+      
+      <div className="container mx-auto relative z-10">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">What Our Clients Say</h2>
-          <div className="h-1 w-20 bg-white mx-auto mb-8 rounded-full"></div>
-          <p className="text-lg max-w-3xl mx-auto text-white/80">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">What Our Clients Say</h2>
+          <div className="h-1 w-20 bg-primary mx-auto mb-8 rounded-full"></div>
+          <p className="text-lg max-w-3xl mx-auto text-muted-foreground">
             Don't just take our word for it. Hear what our clients have to say about
             their experience working with our team.
           </p>
@@ -86,7 +87,7 @@ const TestimonialsSection = () => {
             {getVisibleTestimonials().map((testimonial) => (
               <div
                 key={testimonial.id}
-                className="bg-white/10 backdrop-blur-md rounded-xl p-8 shadow-lg border border-white/20"
+                className="bg-card/50 backdrop-blur-md rounded-xl p-8 border border-border"
               >
                 <div className="flex items-center mb-6">
                   <img
@@ -95,30 +96,28 @@ const TestimonialsSection = () => {
                     className="w-16 h-16 rounded-full object-cover mr-4"
                   />
                   <div>
-                    <h4 className="font-bold text-lg">{testimonial.name}</h4>
-                    <p className="text-white/70">{testimonial.company}</p>
+                    <h4 className="font-bold text-lg text-foreground">{testimonial.name}</h4>
+                    <p className="text-muted-foreground">{testimonial.company}</p>
                     <div className="flex mt-1">
                       {[...Array(5)].map((_, i) => (
                         <Star
                           key={i}
                           size={16}
                           fill={i < testimonial.stars ? "currentColor" : "none"}
-                          className={i < testimonial.stars ? "text-yellow-400" : "text-gray-400"}
+                          className={i < testimonial.stars ? "text-primary" : "text-muted-foreground"}
                         />
                       ))}
                     </div>
                   </div>
                 </div>
-                <p className="italic text-white/90">"{testimonial.quote}"</p>
+                <p className="italic text-muted-foreground">"{testimonial.quote}"</p>
               </div>
             ))}
           </div>
 
           {/* Mobile Testimonial Carousel */}
           <div className="md:hidden">
-            <div
-              className="bg-white/10 backdrop-blur-md rounded-xl p-8 shadow-lg border border-white/20"
-            >
+            <div className="bg-card/50 backdrop-blur-md rounded-xl p-8 border border-border">
               <div className="flex items-center mb-6">
                 <img
                   src={testimonials[currentIndex].image}
@@ -126,35 +125,35 @@ const TestimonialsSection = () => {
                   className="w-16 h-16 rounded-full object-cover mr-4"
                 />
                 <div>
-                  <h4 className="font-bold text-lg">{testimonials[currentIndex].name}</h4>
-                  <p className="text-white/70">{testimonials[currentIndex].company}</p>
+                  <h4 className="font-bold text-lg text-foreground">{testimonials[currentIndex].name}</h4>
+                  <p className="text-muted-foreground">{testimonials[currentIndex].company}</p>
                   <div className="flex mt-1">
                     {[...Array(5)].map((_, i) => (
                       <Star
                         key={i}
                         size={16}
                         fill={i < testimonials[currentIndex].stars ? "currentColor" : "none"}
-                        className={i < testimonials[currentIndex].stars ? "text-yellow-400" : "text-gray-400"}
+                        className={i < testimonials[currentIndex].stars ? "text-primary" : "text-muted-foreground"}
                       />
                     ))}
                   </div>
                 </div>
               </div>
-              <p className="italic text-white/90">"{testimonials[currentIndex].quote}"</p>
+              <p className="italic text-muted-foreground">"{testimonials[currentIndex].quote}"</p>
             </div>
           </div>
 
           {/* Navigation Buttons */}
           <button
             onClick={prevSlide}
-            className="absolute top-1/2 left-0 transform -translate-y-1/2 bg-white/10 text-white p-2 rounded-full hover:bg-white/20 transition-colors"
+            className="absolute top-1/2 left-0 transform -translate-y-1/2 bg-primary/20 text-primary p-2 rounded-full hover:bg-primary/30 transition-colors"
             aria-label="Previous testimonial"
           >
             <ChevronLeft size={24} />
           </button>
           <button
             onClick={nextSlide}
-            className="absolute top-1/2 right-0 transform -translate-y-1/2 bg-white/10 text-white p-2 rounded-full hover:bg-white/20 transition-colors"
+            className="absolute top-1/2 right-0 transform -translate-y-1/2 bg-primary/20 text-primary p-2 rounded-full hover:bg-primary/30 transition-colors"
             aria-label="Next testimonial"
           >
             <ChevronRight size={24} />
@@ -168,7 +167,7 @@ const TestimonialsSection = () => {
               key={index}
               onClick={() => setCurrentIndex(index)}
               className={`w-3 h-3 rounded-full transition-colors ${
-                index === currentIndex ? "bg-white" : "bg-white/30"
+                index === currentIndex ? "bg-primary" : "bg-primary/30"
               }`}
               aria-label={`Go to testimonial ${index + 1}`}
             />

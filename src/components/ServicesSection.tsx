@@ -1,19 +1,18 @@
-
 import React from "react";
-import { Trophy, BarChart, Search, PenTool, Globe, MessageSquare } from "lucide-react";
+import { Trophy, BarChart, Search, PenTool, Globe, MessageSquare, Bot, DollarSign } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const ServicesSection = () => {
   const services = [
     {
-      icon: <BarChart className="h-10 w-10 mb-4 text-primary" />,
-      title: "Digital Marketing",
-      description: "Strategic campaigns that drive traffic, engagement, and conversions across platforms."
+      icon: <Search className="h-10 w-10 mb-4 text-primary" />,
+      title: "SEO",
+      description: "Search Engine Optimization-Improving your website's visibility in search engine results."
     },
     {
-      icon: <Search className="h-10 w-10 mb-4 text-primary" />,
-      title: "SEO Optimization",
-      description: "Boost visibility and rankings with data-driven search engine optimization strategies."
+      icon: <Globe className="h-10 w-10 mb-4 text-primary" />,
+      title: "SMM",
+      description: "Social Media Marketing-Building a strong online presence through social media platforms."
     },
     {
       icon: <PenTool className="h-10 w-10 mb-4 text-primary" />,
@@ -22,32 +21,42 @@ const ServicesSection = () => {
     },
     {
       icon: <Trophy className="h-10 w-10 mb-4 text-primary" />,
-      title: "Content Marketing",
-      description: "Engaging content that tells your brand story and resonates with your audience."
+      title: "Brand Strategy",
+      description: "Developing a unique brand identity that sets you apart from competitors."
     },
     {
-      icon: <Globe className="h-10 w-10 mb-4 text-primary" />,
-      title: "Social Media Management",
-      description: "Build community and drive engagement with strategic social media campaigns."
+      icon: <BarChart className="h-10 w-10 mb-4 text-primary" />,
+      title: "Digital Marketing",
+      description: "Comprehensive digital marketing strategies to grow your online presence."
     },
     {
       icon: <MessageSquare className="h-10 w-10 mb-4 text-primary" />,
-      title: "Brand Strategy",
-      description: "Develop a cohesive brand identity that communicates your unique value proposition."
+      title: "Content Marketing",
+      description: "Creating and distributing valuable and engaging content to attract and convert customers."
+    },
+    {
+      icon: <DollarSign className="h-10 w-10 mb-4 text-primary" />,
+      title: "Affiliate Marketing",
+      description: "Earn commissions by promoting products or services through your website or social media channels."
+    },
+    {
+      icon: <Bot className="h-10 w-10 mb-4 text-primary" />,
+      title: "AI Automation",
+      description: "Automating repetitive tasks to save time and increase efficiency."
     }
   ];
 
   return (
-    <section id="services" className="section-padding relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-gray-50/50 to-white/90 backdrop-blur-sm"></div>
+    <section className="py-20 px-6 bg-background relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-accent/5 to-background"></div>
       
       <div className="container mx-auto relative z-10">
         <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            <span className="text-gradient-primary">What We Do</span>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">
+            What We Do
           </h2>
           <div className="h-1 w-20 bg-gradient-to-r from-primary to-accent mx-auto mb-8 rounded-full"></div>
-          <p className="text-lg max-w-3xl mx-auto text-gray-700">
+          <p className="text-lg max-w-3xl mx-auto text-muted-foreground">
             We provide comprehensive digital solutions tailored to your business goals.
             Our services are designed to help you stand out in a crowded marketplace.
           </p>
@@ -57,15 +66,15 @@ const ServicesSection = () => {
           {services.map((service, index) => (
             <div 
               key={index} 
-              className="neo-card p-8 rounded-xl hover-lift group animate-fade-in"
+              className="bg-card/50 backdrop-blur-sm border border-border p-8 rounded-xl hover:bg-card/80 transition-colors animate-fade-in"
               style={{ animationDelay: `${index * 100}ms` }}
             >
               <div className="flex-grow">
                 <div className="mb-6 transform group-hover:scale-110 transition-transform">
                   {service.icon}
                 </div>
-                <h3 className="text-xl font-bold mb-4">{service.title}</h3>
-                <p className="text-gray-600 mb-4">{service.description}</p>
+                <h3 className="text-xl font-bold mb-4 text-foreground">{service.title}</h3>
+                <p className="text-muted-foreground mb-4">{service.description}</p>
               </div>
               <a 
                 href="#contact" 
@@ -92,7 +101,10 @@ const ServicesSection = () => {
         </div>
 
         <div className="text-center mt-16">
-          <Button className="neo-card text-primary hover:bg-white hover:shadow-lg text-lg px-8 py-6 hover-lift">
+          <Button 
+            size="lg"
+            className="bg-primary hover:bg-primary/90 text-primary-foreground text-lg px-8"
+          >
             Schedule a Free Consultation
           </Button>
         </div>

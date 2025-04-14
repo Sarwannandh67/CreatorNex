@@ -1,8 +1,26 @@
-
 import React from "react";
-import { ArrowUp } from "lucide-react";
+import { ArrowUp, Twitter, Instagram, Linkedin } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
+  const socialLinks = [
+    {
+      name: "Twitter",
+      icon: <Twitter className="h-5 w-5" />,
+      url: "https://twitter.com/creatornex",
+    },
+    {
+      name: "Instagram",
+      icon: <Instagram className="h-5 w-5" />,
+      url: "https://instagram.com/creatornex",
+    },
+    {
+      name: "LinkedIn",
+      icon: <Linkedin className="h-5 w-5" />,
+      url: "https://linkedin.com/company/creatornex",
+    },
+  ];
+
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -18,32 +36,21 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Company Info */}
           <div>
-            <h3 className="text-2xl font-bold mb-6">Digitalize</h3>
+            <h3 className="text-2xl font-bold mb-6">CreatorNex</h3>
             <p className="text-gray-400 mb-6">
               We help brands thrive in the digital age with strategies that drive real growth.
             </p>
             <div className="flex space-x-4">
-              {["Twitter", "Facebook", "Instagram", "LinkedIn"].map((platform) => (
+              {socialLinks.map((platform) => (
                 <a
-                  key={platform}
-                  href={`#${platform.toLowerCase()}`}
-                  className="bg-gray-800 p-2 rounded-full hover:bg-primary transition-colors"
-                  aria-label={platform}
+                  key={platform.name}
+                  href={platform.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-gray-800 p-2 rounded-full hover:bg-primary hover:text-white transition-colors"
+                  aria-label={platform.name}
                 >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-5 w-5"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M12 6v6m0 0v6m0-6h6m-6 0H6"
-                    />
-                  </svg>
+                  {platform.icon}
                 </a>
               ))}
             </div>
@@ -119,18 +126,27 @@ const Footer = () => {
         {/* Bottom Footer */}
         <div className="flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-400 mb-4 md:mb-0">
-            &copy; {currentYear} Digitalize. All rights reserved.
+            &copy; {currentYear} CreatorNex. All rights reserved.
           </p>
           <div className="flex space-x-6">
-            <a href="#privacy" className="text-gray-400 hover:text-white transition-colors">
+            <Link 
+              to="/privacy-policy" 
+              className="text-gray-400 hover:text-white transition-colors"
+            >
               Privacy Policy
-            </a>
-            <a href="#terms" className="text-gray-400 hover:text-white transition-colors">
+            </Link>
+            <Link 
+              to="/terms-of-service" 
+              className="text-gray-400 hover:text-white transition-colors"
+            >
               Terms of Service
-            </a>
-            <a href="#cookies" className="text-gray-400 hover:text-white transition-colors">
+            </Link>
+            <Link 
+              to="/cookie-policy" 
+              className="text-gray-400 hover:text-white transition-colors"
+            >
               Cookie Policy
-            </a>
+            </Link>
           </div>
         </div>
       </div>

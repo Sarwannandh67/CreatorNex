@@ -1,8 +1,5 @@
-
 import React, { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { ThemeToggle } from "@/components/theme-toggle";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -28,7 +25,7 @@ const Navbar = () => {
   };
 
   const navLinks = [
-    { label: "Home", href: "#hero" },
+    { label: "Home", href: "#home" },
     { label: "About", href: "#about" },
     { label: "Services", href: "#services" },
     { label: "Portfolio", href: "#portfolio" },
@@ -36,17 +33,32 @@ const Navbar = () => {
     { label: "Contact", href: "#contact" },
   ];
 
+  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    const element = document.querySelector(href);
+    if (element) {
+      const offsetTop = element.getBoundingClientRect().top + window.pageYOffset;
+      window.scrollTo({
+        top: offsetTop - 80, // Offset for the fixed navbar
+        behavior: "smooth",
+      });
+    }
+    setIsMobileMenuOpen(false);
+  };
+
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled 
-          ? "glass-dark py-3" 
-          : "bg-transparent py-6"
-      }`}
+          ? "bg-background/80 backdrop-blur-md border-b border-border" 
+          : "bg-transparent"
+      } dark`}
     >
-      <div className="container mx-auto px-6 flex justify-between items-center">
-        <a href="#" className="flex items-center">
-          <span className="text-2xl font-bold text-gradient">Digitalize</span>
+      <div className="container mx-auto px-6 flex justify-between items-center h-16">
+        <a href="#home" className="flex items-center" onClick={(e) => scrollToSection(e, "#home")}>
+          <span className="text-2xl font-bold bg-gradient-to-r from-primary to-primary-foreground bg-clip-text text-transparent">
+            CreatorNex
+          </span>
         </a>
 
         {/* Desktop Navigation */}
@@ -56,31 +68,34 @@ const Navbar = () => {
               <li key={link.label}>
                 <a
                   href={link.href}
-                  className={`text-sm font-medium transition-colors hover:text-primary ${
-                    isScrolled ? "text-foreground" : "text-white"
-                  }`}
+                  onClick={(e) => scrollToSection(e, link.href)}
+                  className="text-sm font-medium transition-colors hover:text-primary text-foreground/80 hover:text-foreground"
                 >
                   {link.label}
                 </a>
               </li>
             ))}
           </ul>
-          <ThemeToggle />
-          <Button className="bg-primary hover:bg-primary/90">Get in Touch</Button>
+          <a
+            href="#contact"
+            onClick={(e) => scrollToSection(e, "#contact")}
+            className="bg-primary hover:bg-primary/90 text-primary-foreground px-4 py-2 rounded-md transition-colors"
+          >
+            Get in Touch
+          </a>
         </div>
 
         {/* Mobile Menu Button */}
-        <div className="flex items-center space-x-4 md:hidden">
-          <ThemeToggle />
+        <div className="flex items-center md:hidden">
           <button
-            className="focus:outline-none"
+            className="focus:outline-none focus:ring-2 focus:ring-primary rounded-md p-2"
             onClick={toggleMobileMenu}
             aria-label="Toggle Menu"
           >
             {isMobileMenuOpen ? (
-              <X className={isScrolled ? "text-foreground" : "text-white"} />
+              <X className="h-6 w-6 text-foreground" />
             ) : (
-              <Menu className={isScrolled ? "text-foreground" : "text-white"} />
+              <Menu className="h-6 w-6 text-foreground" />
             )}
           </button>
         </div>
@@ -88,23 +103,27 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden glass-dark absolute top-full left-0 right-0 shadow-lg">
+        <div className="md:hidden bg-background/95 backdrop-blur-md border-b border-border">
           <ul className="flex flex-col py-4">
             {navLinks.map((link) => (
               <li key={link.label} className="px-6 py-2">
                 <a
                   href={link.href}
-                  className="block text-foreground hover:text-primary"
-                  onClick={() => setIsMobileMenuOpen(false)}
+                  onClick={(e) => scrollToSection(e, link.href)}
+                  className="block text-foreground/80 hover:text-foreground hover:bg-primary/10 rounded-md px-3 py-2 transition-colors"
                 >
                   {link.label}
                 </a>
               </li>
             ))}
             <li className="px-6 py-4">
-              <Button className="w-full bg-primary hover:bg-primary/90">
+              <a
+                href="#contact"
+                onClick={(e) => scrollToSection(e, "#contact")}
+                className="block w-full bg-primary hover:bg-primary/90 text-primary-foreground px-4 py-2 rounded-md text-center transition-colors"
+              >
                 Get in Touch
-              </Button>
+              </a>
             </li>
           </ul>
         </div>
