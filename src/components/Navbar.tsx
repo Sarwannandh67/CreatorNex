@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -38,7 +39,9 @@ const Navbar = () => {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? "bg-white/90 backdrop-blur-md shadow-md py-3" : "bg-transparent py-6"
+        isScrolled 
+          ? "glass-dark py-3" 
+          : "bg-transparent py-6"
       }`}
     >
       <div className="container mx-auto px-6 flex justify-between items-center">
@@ -53,8 +56,8 @@ const Navbar = () => {
               <li key={link.label}>
                 <a
                   href={link.href}
-                  className={`text-sm font-medium hover:text-primary transition-colors ${
-                    isScrolled ? "text-gray-800" : "text-white"
+                  className={`text-sm font-medium transition-colors hover:text-primary ${
+                    isScrolled ? "text-foreground" : "text-white"
                   }`}
                 >
                   {link.label}
@@ -62,32 +65,36 @@ const Navbar = () => {
               </li>
             ))}
           </ul>
-          <Button className="bg-primary hover:bg-primary/90 text-white">Get in Touch</Button>
+          <ThemeToggle />
+          <Button className="bg-primary hover:bg-primary/90">Get in Touch</Button>
         </div>
 
         {/* Mobile Menu Button */}
-        <button
-          className="md:hidden text-2xl focus:outline-none"
-          onClick={toggleMobileMenu}
-          aria-label="Toggle Menu"
-        >
-          {isMobileMenuOpen ? (
-            <X className={isScrolled ? "text-gray-800" : "text-white"} />
-          ) : (
-            <Menu className={isScrolled ? "text-gray-800" : "text-white"} />
-          )}
-        </button>
+        <div className="flex items-center space-x-4 md:hidden">
+          <ThemeToggle />
+          <button
+            className="focus:outline-none"
+            onClick={toggleMobileMenu}
+            aria-label="Toggle Menu"
+          >
+            {isMobileMenuOpen ? (
+              <X className={isScrolled ? "text-foreground" : "text-white"} />
+            ) : (
+              <Menu className={isScrolled ? "text-foreground" : "text-white"} />
+            )}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden bg-white absolute top-full left-0 right-0 shadow-lg">
+        <div className="md:hidden glass-dark absolute top-full left-0 right-0 shadow-lg">
           <ul className="flex flex-col py-4">
             {navLinks.map((link) => (
               <li key={link.label} className="px-6 py-2">
                 <a
                   href={link.href}
-                  className="block text-gray-800 hover:text-primary"
+                  className="block text-foreground hover:text-primary"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {link.label}
@@ -95,7 +102,7 @@ const Navbar = () => {
               </li>
             ))}
             <li className="px-6 py-4">
-              <Button className="w-full bg-primary hover:bg-primary/90 text-white">
+              <Button className="w-full bg-primary hover:bg-primary/90">
                 Get in Touch
               </Button>
             </li>
