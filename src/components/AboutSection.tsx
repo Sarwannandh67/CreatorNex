@@ -84,19 +84,19 @@ const AboutSection = () => {
 
         <div className="flex flex-wrap justify-center gap-8 mt-12">
           <div className="text-center">
-            <div className="text-4xl font-bold text-primary mb-2">10+</div>
+            <div className="text-4xl font-bold text-primary mb-2">2+</div>
             <div className="text-muted-foreground">Years Experience</div>
           </div>
           <div className="text-center">
-            <div className="text-4xl font-bold text-primary mb-2">150+</div>
+            <div className="text-4xl font-bold text-primary mb-2">15+</div>
             <div className="text-muted-foreground">Happy Clients</div>
           </div>
           <div className="text-center">
-            <div className="text-4xl font-bold text-primary mb-2">500+</div>
+            <div className="text-4xl font-bold text-primary mb-2">10+</div>
             <div className="text-muted-foreground">Projects Completed</div>
           </div>
           <div className="text-center">
-            <div className="text-4xl font-bold text-primary mb-2">25+</div>
+            <div className="text-4xl font-bold text-primary mb-2">10+</div>
             <div className="text-muted-foreground">Team Members</div>
           </div>
         </div>
