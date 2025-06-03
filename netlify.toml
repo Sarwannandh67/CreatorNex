@@ -1,8 +1,9 @@
 [build]
   publish = "."
-  command = "echo 'No build command needed'"
+  command = ""
 
 [[redirects]]
   from = "/*"
-  to = "/index.html"
-  status = 200 
+  to = "https://www.creatornex.com/:splat"
+  status = 301
+  force = true 
