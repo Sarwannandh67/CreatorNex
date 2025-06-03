@@ -4,7 +4,11 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
+    "build": "mkdir -p dist && cp index.html dist/",
     "preview": "npx serve ."
+  },
+  "dependencies": {
+    "netlify-cli": "^17.0.0"
   },
   "devDependencies": {
     "serve": "^14.2.1"
